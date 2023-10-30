@@ -9,9 +9,9 @@ import os
 
 teletips=Client(
     "MediaToTelegraphLink",
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"],
-    bot_token = os.environ["BOT_TOKEN"]
+    api_id = 7436880,
+    api_hash = "09e42655b8fd773801f705b01271a011",
+    bot_token = "2124670056:AAF3OVS19vapoKOTY0f6KxaQJvEs6xrA4f0"
 )
 
 @teletips.on_message(filters.command('start') & filters.private)
@@ -23,15 +23,15 @@ I am here to generate Telegraph links for your media files.
 Simply send a valid media file directly to this chat.
 Valid file types are 'jpeg', 'jpg', 'png', 'mp4' and 'gif'.
 
-To generate links in **group chats**, add me to your supergroup and send the command <code>/tl</code> as a reply to a valid media file.
+To generate links in **group chats**, add me to your group and send the command <code>/tl</code> as a reply to a valid media file.
 
 🏠 | [Home](https://t.me/teletipsofficialchannel)
             """
     await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
     
 
-@teletips.on_message(filters.media & filters.private)
-async def get_link_private(client, message):
+@teletips.on_message(filters.media)
+async def private(client, message):
     try:
         text = await message.reply("Processing...")
         async def progress(current, total):
@@ -50,7 +50,7 @@ async def get_link_private(client, message):
     except Exception:
         pass        
 
-@teletips.on_message(filters.command('tl'))
+@teletips.on_message(filters.command(["tl"]))
 async def get_link_group(client, message):
     try:
         text = await message.reply("Processing...")
@@ -70,7 +70,7 @@ async def get_link_group(client, message):
     except Exception:
         pass                                           
 
-print("Bot is alive!")
+print("teletips is alive!")
 teletips.run()
 
 #Copyright ©️ 2022 TeLe TiPs. All Rights Reserved
