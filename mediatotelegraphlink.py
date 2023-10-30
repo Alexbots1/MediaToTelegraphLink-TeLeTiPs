@@ -9,9 +9,9 @@ import os
 
 teletips=Client(
     "MediaToTelegraphLink",
-    api_id = 25263034,
-    api_hash = "294a7bf4488b21609436de1cdd05c316",
-    bot_token = "6417994132:AAGH7rGQNc30LEzdwXzhoeWzXY6i0FEEn-0"
+    api_id = int(os.environ["API_ID"]),"25263034"
+    api_hash = os.environ["API_HASH"],"294a7bf4488b21609436de1cdd05c316"
+    bot_token = os.environ["BOT_TOKEN"]"6417994132:AAGH7rGQNc30LEzdwXzhoeWzXY6i0FEEn-0"
 )
 
 @teletips.on_message(filters.command('start') & filters.private)
@@ -70,7 +70,7 @@ async def get_link_group(client, message):
     except Exception:
         pass                                           
 
-print("teletips is alive!")
+print("Bot is alive!")
 teletips.run()
 
 #Copyright ©️ 2022 TeLe TiPs. All Rights Reserved
